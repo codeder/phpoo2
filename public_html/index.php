@@ -32,7 +32,9 @@ require_once 'class/Juridica.php';
         $clientes[1]->setEndCobranca(new Endereco("Mário das Flores, 38", "Taubaté", "SP"));
         ?>
 
-
+        <?php
+            if(!isset($_GET['id'])):            
+        ?>
 
         <table border="1">
             <thead>
@@ -68,6 +70,46 @@ require_once 'class/Juridica.php';
 
             </tbody>
         </table>
+
+        <?php 
+            else:
+            $id = $_GET['id']-1;
+        ?>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>                                        
+                    <th>Foto</th>
+                    <th>Nome / Razão Social</th>
+                    <th>Tipo</th>
+                    <th>Classificação</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php
+
+                    echo "<tr>";
+                    echo "<td>" . $clientes[$id]->getId() . "</td>";
+                    echo "<td><img src=\"" . $clientes[$id]->getFoto() . "\"/></td>";
+                    if ($clientes[$id]->getTipo() == "Fisica"):
+                        echo "<td>" . $clientes[$id]->getNome() . "</td>";
+                    else:
+                        echo "<td>" . $clientes[$id]->getRazaoSocial() . "</td>";
+                    endif;
+                    echo "<td>" . $clientes[$id]->getTipo() . "</td>";
+                    echo "<td>" . $clientes[$id]->getClassificacao() . "</td>";
+                    echo '<td><a href="?id=' . $clientes[$id]->getId() . '">Editar</a></td>';
+                    echo "</tr>";
+
+                ?>
+
+            </tbody>
+        </table>
+        
+        <?php endif; ?>
 
     </body>
 </html>
