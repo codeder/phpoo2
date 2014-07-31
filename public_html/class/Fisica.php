@@ -1,6 +1,6 @@
 <?php
 
-class Fisica implements iCliente {
+class Fisica extends Foto implements iCliente {
 
     private $id;
     private $tipo;
@@ -8,6 +8,7 @@ class Fisica implements iCliente {
     private $cpf;
     private $sexo;
     private $endereco = array();
+    private $enderecoCobranca = array();
 
     function __construct($id, $tipo, $nome, $cpf, $sexo) {
         $this->id = $id;
@@ -57,6 +58,9 @@ class Fisica implements iCliente {
         $this->sexo = $sexo;
     }
 
+
+    
+    /* Interface Classificação */
     public function getClassificacao() {
         return $this->class;
     }
@@ -65,15 +69,29 @@ class Fisica implements iCliente {
         $this->class = $class;
     }
 
-    public function setEndCobranca($endereco) {
+    /* Interface Endereço Padrão */
+    public function setEnd($endereco) {
         $this->endereco[] = $endereco;
     }
 
-    public function getEndCobranca() {
+    public function getEnd() {
         $endereco = "";
         foreach ($this->endereco as $key => $endereco) {            
             $endereco = $endereco->getRua()." - ".$endereco->getCidade()." / ".$endereco->getEstado();            
             return $endereco;
+        }
+    }    
+    
+    /* Interface Endereço Cobrança */
+    public function setEndCobranca($enderecoCobranca) {
+        $this->enderecoCobranca[] = $enderecoCobranca;
+    }
+
+    public function getEndCobranca() {
+        $enderecoCobranca = "";
+        foreach ($this->enderecoCobranca as $key => $enderecoCobranca) {            
+            $enderecoCobranca = $enderecoCobranca->getRua()." - ".$enderecoCobranca->getCidade()." / ".$enderecoCobranca->getEstado();            
+            return $enderecoCobranca;
         }
     }
 

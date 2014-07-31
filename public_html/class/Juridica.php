@@ -1,6 +1,6 @@
 <?php
 
-class Juridica implements iCliente {
+class Juridica extends Foto implements iCliente {
 
     private $id;
     private $tipo;
@@ -8,6 +8,7 @@ class Juridica implements iCliente {
     private $nomeFantasia;
     private $cnpj;
     private $endereco = array();
+    private $enderecoCobranca = array();
 
     function __construct($id, $tipo, $razaoSocial, $nomeFantasia, $cnpj) {
         $this->id = $id;
@@ -57,6 +58,8 @@ class Juridica implements iCliente {
         $this->cnpj = $cnpj;
     }
 
+    
+    /* Interface Classificação */
     public function getClassificacao() {
         return $this->class;
     }
@@ -65,15 +68,29 @@ class Juridica implements iCliente {
         $this->class = $class;
     }
 
-    public function setEndCobranca($endereco) {
+    /* Interface Endereço Padrão */
+    public function setEnd($endereco) {
         $this->endereco[] = $endereco;
     }
 
-    public function getEndCobranca() {
+    public function getEnd() {
         $endereco = "";
         foreach ($this->endereco as $key => $endereco) {            
             $endereco = $endereco->getRua()." - ".$endereco->getCidade()." / ".$endereco->getEstado();            
             return $endereco;
+        }
+    }      
+    
+    /* Interface Endereço Cobrança */
+    public function setEndCobranca($enderecoCobranca) {
+        $this->enderecoCobranca[] = $enderecoCobranca;
+    }
+
+    public function getEndCobranca() {
+        $enderecoCobranca = "";
+        foreach ($this->enderecoCobranca as $key => $enderecoCobranca) {            
+            $enderecoCobranca = $enderecoCobranca->getRua()." - ".$enderecoCobranca->getCidade()." / ".$enderecoCobranca->getEstado();            
+            return $enderecoCobranca;
         }
     }
 

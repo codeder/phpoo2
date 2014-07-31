@@ -1,3 +1,10 @@
+<?php
+require_once 'interface/iCliente.php';
+require_once 'class/Endereco.php';
+require_once 'class/Foto.php';
+require_once 'class/Fisica.php';
+require_once 'class/Juridica.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -12,55 +19,55 @@
 
 
         <?php
-        require_once 'interface/iCliente.php';
-        require_once 'class/Endereco.php';
-        require_once 'class/Fisica.php';
-        require_once 'class/Juridica.php';
-
-
-
         $clientes[0] = new Fisica(1, null, "Eder da Silva", "305.132.018.82", "Masculino");
+        $clientes[0]->setFoto("http://placehold.it/65x65");
         $clientes[0]->setClassificacao(5);
-        $clientes[0]->setEndCobranca(new Endereco("Durvalino de Castro, 25", "Cruzeiro", "SP"));
+        $clientes[0]->setEnd(new Endereco("Durvalino de Castro, 25", "Cruzeiro", "SP"));
+        $clientes[0]->setEndCobranca(new Endereco("Rua Amador Costa e Souza, 31", "Cruzeiro", "SP"));
 
         $clientes[1] = new Juridica(2, null, "Ednelson Prado ME", "Vincere Comunicação", "51.829.016/0001-42");
+        $clientes[1]->setFoto("http://placehold.it/65x65");
         $clientes[1]->setClassificacao(3);
+        $clientes[1]->setEnd(new Endereco("Rua Livre das Flores, 58", "Lavrinhas", "SP"));
         $clientes[1]->setEndCobranca(new Endereco("Mário das Flores, 38", "Taubaté", "SP"));
-
-
-        $clientes[2] = new Juridica(3, null, "Helena Santos ME", "Essência do Vale", "13.393.490/0001-85");
-        $clientes[2]->setClassificacao(1);
-        $clientes[2]->setEndCobranca(new Endereco("Rua do Asfalto, 2000", "Cruzeiro", "SP"));
-
-        $clientes[3] = new Fisica(4, null, "Angela Maria", "999.999.999.99", "Feminino");
-        $clientes[3]->setClassificacao(5);
-        $clientes[3]->setEndCobranca(new Endereco("Amador Costa e Souza, 31", "Rio de Janeiro", "RJ"));
-
-
-
-        foreach ($clientes as $cliente) {
-            if ($cliente->getTipo() == "Fisica") {
-                echo "<p>";
-                echo "ID: " . $cliente->getId() . "<br>";
-                echo "Nome: " . $cliente->getNome() . "<br>";
-                echo "Classificação: " . $cliente->getClassificacao() . "<br>";
-                echo $cliente->getEndCobranca();
-                echo "</p>";
-            } else {
-                echo "<p>";
-                echo "ID: " . $cliente->getId() . "<br>";
-                echo "Razão Social: " . $cliente->getRazaoSocial() . "<br>";
-                echo "Classificação: " . $cliente->getClassificacao() . "<br>";
-                echo $cliente->getEndCobranca();
-                echo "</p>";
-            }
-        }
-        
         ?>
 
 
 
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>                                        
+                    <th>Foto</th>
+                    <th>Nome / Razão Social</th>
+                    <th>Tipo</th>
+                    <th>Classificação</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
 
+                <?php
+                foreach ($clientes as $cliente) {
+
+                    echo "<tr>";
+                    echo "<td>" . $cliente->getId() . "</td>";
+                    echo "<td><img src=\"" . $cliente->getFoto() . "\"/></td>";
+                    if ($cliente->getTipo() == "Fisica"):
+                        echo "<td>" . $cliente->getNome() . "</td>";
+                    else:
+                        echo "<td>" . $cliente->getRazaoSocial() . "</td>";
+                    endif;
+                    echo "<td>" . $cliente->getTipo() . "</td>";
+                    echo "<td>" . $cliente->getClassificacao() . "</td>";
+                    echo '<td><a href="?id=' . $cliente->getId() . '">Editar</a></td>';
+                    echo "</tr>";
+                }
+                ?>
+
+
+            </tbody>
+        </table>
 
     </body>
 </html>
