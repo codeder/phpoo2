@@ -30,6 +30,50 @@ require_once 'class/Juridica.php';
         $clientes[1]->setClassificacao(3);
         $clientes[1]->setEnd(new Endereco("Rua Livre das Flores, 58", "Lavrinhas", "SP"));
         $clientes[1]->setEndCobranca(new Endereco("Mário das Flores, 38", "Taubaté", "SP"));
+
+        $clientes[2] = new Fisica(3, null, "Angela Maria de Abreu Oliveira", "888.888.888.88", "Feminino");
+        $clientes[2]->setFoto("http://placehold.it/130x130");
+        $clientes[2]->setClassificacao(5);
+        $clientes[2]->setEnd(new Endereco("Maurelino Vicentino Souza, 200", "Rio de Janeiro", "RJ"));
+        $clientes[2]->setEndCobranca(new Endereco("Valfredo Tomas Nóbrega, 71", "Rio de Janeiro", "RJ"));
+
+        $clientes[3] = new Juridica(4, null, "Solange Gomes ME", "Padaria São Carlos", "96.458.963/0001-25");
+        $clientes[3]->setFoto("http://placehold.it/130x130");
+        $clientes[3]->setClassificacao(3);
+        $clientes[3]->setEnd(new Endereco("Rua Juazeiro do Norte, 85", "Passa Quatro", "MG"));
+        
+        $clientes[4] = new Fisica(5, null, "Florentina de Jesus", "999.999.999.99", "Feminino");
+        $clientes[4]->setFoto("http://placehold.it/130x130");
+        $clientes[4]->setClassificacao(5);
+        $clientes[4]->setEnd(new Endereco("Rua dos Conjolos Sumaré, 1000", "Baependí", "MG"));
+        
+        $clientes[5] = new Fisica(6, null, "Luana Alves", "777.777.777.77", "Feminino");
+        $clientes[5]->setFoto("http://placehold.it/130x130");
+        $clientes[5]->setClassificacao(5);
+        $clientes[5]->setEnd(new Endereco("Rua Crispim Gonçalves", "Lavrinhas", "SP"));
+        
+        $clientes[6] = new Juridica(7, null, "Luciana Mendes ME", "Software & CIA Ltda", "56.689.015/0001-66");
+        $clientes[6]->setFoto("http://placehold.it/130x130");
+        $clientes[6]->setClassificacao(3);
+        $clientes[6]->setEnd(new Endereco("Rua Zezé Valadão, 71", "Aparecida", "SP"));
+        $clientes[6]->setEndCobranca(new Endereco("Vila do Chaves, 71", "Tangamandápio", "SP"));
+        
+        $clientes[7] = new Juridica(8, null, "Wesley Willians ME", "Code Education", "85.789.963/0001-63");
+        $clientes[7]->setFoto("http://placehold.it/130x130");
+        $clientes[7]->setClassificacao(3);
+        $clientes[7]->setEnd(new Endereco("Rua Tancredo Neves, 96", "São Paulo", "SP"));
+        $clientes[7]->setEndCobranca(new Endereco("Avenida Maria do Bairro, 80", "São Paulo", "SP"));
+        
+        $clientes[8] = new Fisica(9, null, "Tiririca de Jesus", "589.874.569.56", "Masculino");
+        $clientes[8]->setFoto("http://placehold.it/130x130");
+        $clientes[8]->setClassificacao(5);
+        $clientes[8]->setEnd(new Endereco("Rua Margarida Oculta, 080", "Cabo Frio", "RJ"));
+        
+        $clientes[9] = new Fisica(10, null, "Joaquim Alves", "456.874.563.85", "Masculino");
+        $clientes[9]->setFoto("http://placehold.it/130x130");
+        $clientes[9]->setClassificacao(5);
+        $clientes[9]->setEnd(new Endereco("Rua José Crispim Gonçalves", "Lavrinhas", "SP"));        
+        
         ?>
 
         <?php
@@ -78,7 +122,7 @@ require_once 'class/Juridica.php';
 
             <table border="1" width="100%">
                 <tr>
-                    <td colspan="2" rowspan="4"><img src="<?php echo $clientes[$id]->getFoto(); ?>" /></td>
+                    <td colspan="2" rowspan="5"><img src="<?php echo $clientes[$id]->getFoto(); ?>" /></td>
                     <td>Código:</td>
                     <td><?php echo $clientes[$id]->getId(); ?></td>
                 </tr>
@@ -88,6 +132,14 @@ require_once 'class/Juridica.php';
                         <td><?php echo $clientes[$id]->getNome(); ?></td>
                     <?php else: ?>
                         <td><?php echo $clientes[$id]->getRazaoSocial(); ?></td>
+                    <?php endif; ?>
+                </tr>
+                <tr>
+                    <td>CPF/CNPJ:</td>
+                    <?php if ($clientes[$id]->getTipo() == "Fisica"): ?>
+                        <td><?php echo $clientes[$id]->getCpf(); ?></td>
+                    <?php else: ?>
+                        <td><?php echo $clientes[$id]->getCnpj(); ?></td>
                     <?php endif; ?>
                 </tr>
                 <tr>
