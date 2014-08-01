@@ -1,0 +1,25 @@
+.table thead tr th, .table tbody tr td{
+	vertical-align: middle;
+}
+table tbody tr td .progress{
+	width: 70%;
+	margin: 0 auto;
+	margin-bottom: 0;
+}
+table tbody tr td .sr-only{
+	height: auto;
+	width: auto;
+	position: inherit;
+}
+.view-customer tbody tr td .progress{
+	width: 100%;
+}
+table tr .center{
+	text-align: center;
+}
+table tr .left{
+	text-align: left;
+}
+.page-title{
+	margin-bottom: 50px;
+}
