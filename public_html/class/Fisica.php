@@ -1,6 +1,6 @@
 <?php
 
-class Fisica extends Foto implements iCliente {
+class Fisica extends DescricaoFoto implements iCliente {
 
     private $id;
     private $tipo;
@@ -61,12 +61,12 @@ class Fisica extends Foto implements iCliente {
 
     
     /* Interface Classificação */
-    public function getClassificacao() {
-        return $this->class;
+    public function getPercentual() {
+        return $this->percentual;
     }
 
-    public function setClassificacao($class) {
-        $this->class = $class;
+    public function setPercentual($percentual) {
+        $this->percentual = $percentual;
     }
 
     /* Interface Endereço Padrão */

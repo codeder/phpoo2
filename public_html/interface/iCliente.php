@@ -2,8 +2,8 @@
 
 interface iCliente {
         
-    public function getClassificacao();
-    public function setClassificacao($class);
+    public function getPercentual();
+    public function setPercentual($class);
     public function getEnd();
     public function setEnd($endereco);
     public function getEndCobranca();
