@@ -19,6 +19,11 @@ require_once 'data/clientes.php';
     <link rel="stylesheet" href="assets/css/bootstrap-theme.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
+    
+    <script src="assets/js/jquery-1.10.2.min.js"></script>
+    <script src="assets/js/jquery.tablesorter.min.js"></script>
+    <script>$(function(){$('.table-list').tablesorter(); });</script>
+
 </head>
 <body>
 
@@ -34,16 +39,15 @@ require_once 'data/clientes.php';
         <?php
         if (!isset($_GET['id'])){
             ?>
-        }
 
-        <table class="table table-striped">
+        <table class="table table-striped table-list">
             <thead>
                 <tr>
-                    <th class="center">Código</th>                                        
+                    <th class="center"><span>Código</span></th>                                        
                     <th>Imagem</th>
-                    <th>Nome / Razão Social</th>
-                    <th class="left">Tipo</th>
-                    <th class="center">Progresso do projeto:</th>
+                    <th><span>Nome / Razão Social</span></th>
+                    <th class="left"><span>Tipo</span></th>
+                    <th class="center"><span>Progresso do projeto:</span></th>
                     <th class="center">Informações do cliente</th>
                 </tr>
             </thead>
@@ -84,7 +88,7 @@ require_once 'data/clientes.php';
 
 
             </tbody>
-        </table>
+        </table>        
 
         <?php
         } elseif($_GET['id'] <= count($clientes)){ 

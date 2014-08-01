@@ -28,3 +28,13 @@ strong.bg-danger{
 .page-title{
 	margin-bottom: 50px;
 }
+.table-list thead tr th span{
+	padding-right: 20px;
+	cursor: pointer;
+}
+.table-list thead tr th.headerSortUp span {
+  background: url('../images/down-arrow.png') no-repeat right center;
+}
+.table-list thead tr th.headerSortDown span {
+  background: url('../images/up-arrow.png') no-repeat right center;
+}
