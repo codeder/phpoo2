@@ -27,13 +27,14 @@ require_once 'data/clientes.php';
 
 
         <div class="page-title">
-            <h1>Clientes - Informações de conclusão dos projetos</h1>
+            <h1>Clientes - Andamento dos projetos</h1>
         </div>
 
 
         <?php
-        if (!isset($_GET['id'])):
+        if (!isset($_GET['id'])){
             ?>
+        }
 
         <table class="table table-striped">
             <thead>
@@ -86,7 +87,7 @@ require_once 'data/clientes.php';
         </table>
 
         <?php
-        else:
+        } elseif($_GET['id'] <= count($clientes)){ 
             $id = $_GET['id'] - 1;
         ?>
 
@@ -163,9 +164,14 @@ require_once 'data/clientes.php';
                 </tr>
             <?php endif; ?>
         </table>
-        <a href="/" class="btn btn-default btn-lg">Voltar</a>
+        <a href="/" class="btn btn-default btn-lg">Voltar</a>        
 
-    <?php endif; ?>
+    <?php } else{ ?>
+
+    <strong class="bg-danger">Nenhum cliente foi encontrado</strong>    
+    <a href="/" class="btn btn-default btn-lg">Voltar</a>
+    <?php }; ?>
+
 
 
 </div>

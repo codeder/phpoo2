@@ -20,6 +20,11 @@ table tr .center{
 table tr .left{
 	text-align: left;
 }
+strong.bg-danger{
+	display: block;
+	padding: 20px;
+	margin-bottom: 25px;
+}
 .page-title{
 	margin-bottom: 50px;
 }
