@@ -1,21 +1,25 @@
 <?php
 
-class Juridica extends DescricaoFoto implements iCliente {
+namespace ES\Pessoa\Tipo;
+use ES\Pessoa\DescricaoFoto as Descricao;
+use ES\Inter\iCliente;
+
+class Fisica extends Descricao implements iCliente {
 
     private $id;
     private $tipo;
-    private $razaoSocial;
-    private $nomeFantasia;
-    private $cnpj;
+    private $nome;
+    private $cpf;
+    private $sexo;
     private $endereco = array();
     private $enderecoCobranca = array();
 
-    function __construct($id, $tipo, $razaoSocial, $nomeFantasia, $cnpj) {
+    function __construct($id, $tipo, $nome, $cpf, $sexo) {
         $this->id = $id;
-        $this->tipo = "Juridica";
-        $this->razaoSocial = $razaoSocial;
-        $this->nomeFantasia = $nomeFantasia;
-        $this->cnpj = $cnpj;
+        $this->tipo = "Fisica";
+        $this->nome = $nome;
+        $this->cpf = $cpf;
+        $this->sexo = $sexo;
     }
 
     public function getId() {
@@ -26,16 +30,16 @@ class Juridica extends DescricaoFoto implements iCliente {
         return $this->tipo;
     }
 
-    public function getRazaoSocial() {
-        return $this->razaoSocial;
+    public function getNome() {
+        return $this->nome;
     }
 
-    public function getNomeFantasia() {
-        return $this->nomeFantasia;
+    public function getCpf() {
+        return $this->cpf;
     }
 
-    public function getCnpj() {
-        return $this->cnpj;
+    public function getSexo() {
+        return $this->sexo;
     }
 
     public function setId($id) {
@@ -46,17 +50,18 @@ class Juridica extends DescricaoFoto implements iCliente {
         $this->tipo = $tipo;
     }
 
-    public function setRazaoSocial($razaoSocial) {
-        $this->razaoSocial = $razaoSocial;
+    public function setNome($nome) {
+        $this->nome = $nome;
     }
 
-    public function setNomeFantasia($nomeFantasia) {
-        $this->nomeFantasia = $nomeFantasia;
+    public function setCpf($cpf) {
+        $this->cpf = $cpf;
     }
 
-    public function setCnpj($cnpj) {
-        $this->cnpj = $cnpj;
+    public function setSexo($sexo) {
+        $this->sexo = $sexo;
     }
+
 
     
     /* Interface Classificação */
@@ -79,7 +84,7 @@ class Juridica extends DescricaoFoto implements iCliente {
             $endereco = $endereco->getRua()." - ".$endereco->getCidade()." / ".$endereco->getEstado();            
             return $endereco;
         }
-    }      
+    }    
     
     /* Interface Endereço Cobrança */
     public function setEndCobranca($enderecoCobranca) {

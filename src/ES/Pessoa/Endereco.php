@@ -1,5 +1,7 @@
 <?php
 
+namespace ES\Pessoa;
+
 class Endereco {
     
     public $rua;

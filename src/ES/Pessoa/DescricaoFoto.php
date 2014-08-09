@@ -1,5 +1,7 @@
 <?php
 
+namespace ES\Pessoa;
+
 class DescricaoFoto {
     
     private $descricao;

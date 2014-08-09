@@ -1,8 +1,12 @@
 <?php
 
+use ES\Pessoa\Tipo\Fisica;
+use ES\Pessoa\Tipo\Juridica;
+use ES\Pessoa\Endereco;
+
+
 $descPadrao = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>";
 $descPadrao .= "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>";
-
 
 
 $clientes[0] = new Fisica(1, null, "Eder da Silva", "305.132.018.82", "Masculino");
@@ -11,7 +15,6 @@ $clientes[0]->setDescricao($descPadrao);
 $clientes[0]->setPercentual(68);
 $clientes[0]->setEnd(new Endereco("Durvalino de Castro, 25", "Cruzeiro", "SP"));
 $clientes[0]->setEndCobranca(new Endereco("Rua Amador Costa e Souza, 31", "Cruzeiro", "SP"));
-
 
 
 $clientes[1] = new Juridica(2, null, "Ednelson Prado ME", "Vincere Comunicação", "51.829.016/0001-42");
@@ -87,5 +90,6 @@ $clientes[9]->setFoto("http://placehold.it/130x130");
 $clientes[9]->setDescricao($descPadrao);
 $clientes[9]->setPercentual(97);
 $clientes[9]->setEnd(new Endereco("Rua José Crispim Gonçalves", "Lavrinhas", "SP"));
-?>
 
+
+?>

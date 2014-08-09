@@ -1,5 +1,7 @@
 <?php
 
+namespace ES\Inter;
+
 interface iCliente {
         
     public function getPercentual();

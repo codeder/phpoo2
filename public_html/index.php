@@ -1,11 +1,17 @@
 <?php
-require_once 'interface/iCliente.php';
-require_once 'class/Endereco.php';
-require_once 'class/DescricaoFoto.php';
-require_once 'class/Fisica.php';
-require_once 'class/Juridica.php';
-require_once 'data/clientes.php';
+
+DEFINE("SRC","../src/ES/");
+
+/* Autoloader */
+require_once SRC.'Config/SplClassLoader.php';
+$loader = new SplClassLoader('ES', '../src');
+$loader->register();
+
+/* Dados dos clientes */
+require_once SRC.'Data/Clientes.php';
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -168,12 +174,12 @@ require_once 'data/clientes.php';
                 </tr>
             <?php endif; ?>
         </table>
-        <a href="/" class="btn btn-default btn-lg">Voltar</a>        
+        <a href="javascript: history.go(-1)" class="btn btn-default btn-lg">Voltar</a>
 
     <?php } else{ ?>
 
     <strong class="bg-danger">Nenhum cliente foi encontrado</strong>    
-    <a href="/" class="btn btn-default btn-lg">Voltar</a>
+    <a href="javascript: history.go(-1)" class="btn btn-default btn-lg">Voltar</a>
     <?php }; ?>
 
 
